@@ -16,3 +16,24 @@ class AutomaticCamera(object):
             self.__pos[0] + self.__speed[0],
             self.__pos[1] + self.__speed[1]
         )
+
+
+class FollowCamera(object):
+    """
+        a camera that follows a target, the target
+        appears in the middle of the screen, it uses
+        the target's rect object and the screen dimensions
+        to center the target on the screen.
+    """
+
+    def __init(self, pos=(0, 0)):
+        self.__pos = pos
+
+    def apply(self):
+        return (-self.__pos[0], -self.__pos[1])
+
+    def update(self, target):
+        self.__pos = (
+            target.rect.left - SCREEN_WIDTH / 2,
+            target.rect.top - SCREEN_HEIGHT / 2,
+        )
