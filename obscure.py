@@ -1,4 +1,8 @@
-class Camera(object):
+class AutomaticCamera(object):
+    """
+        a camera that moves automaticaly with a given
+        velocity, that its a speed and a direction.
+    """
 
     def __init__(self, pos=(0, 0), speed=(1, 0)):
         self.__pos = pos
