@@ -12,10 +12,24 @@ class AutomaticCamera(object):
         return (-self.__pos[0], -self.__pos[1])
 
     def update(self):
-        self.__pos = (
-            self.__pos[0] + self.__speed[0],
-            self.__pos[1] + self.__speed[1]
-        )
+        """
+            returns the new position of the camera,
+            and never moves beyond the boundaries.
+        """
+
+        next_x = self.__pos[0] + self.__speed[0]
+        next_y = self.__pos[1] + self.__speed[1]
+
+        boundary_left = 0
+        boundary_right = LEVEL_WIDTH - SCREEN_WIDTH
+
+        if next_x < boundary_left:
+            next_x = boundary_left
+        if next_x > boundary_right:
+            next_x = boundary_right
+
+        return (next_x, next_y)
+
 
 
 class FollowCamera(object):
