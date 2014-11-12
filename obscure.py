@@ -22,14 +22,19 @@ class AutomaticCamera(object):
 
         boundary_left = 0
         boundary_right = LEVEL_WIDTH - SCREEN_WIDTH
+        boundary_top = 0
+        boundary_bottom = LEVEL_HEIGHT - SCREEN_HEIGHT
 
         if next_x < boundary_left:
             next_x = boundary_left
         if next_x > boundary_right:
             next_x = boundary_right
+        if next_y < boundary_top:
+            next_y = boundary_top
+        if next_y > boundary_bottom:
+            next_y = boundary_top
 
         return (next_x, next_y)
-
 
 
 class FollowCamera(object):
